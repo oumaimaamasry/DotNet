@@ -1,0 +1,65 @@
+﻿@model IEnumerable<tp7.Models.DossiersSinistre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOuverture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCloture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indemnite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdExpertNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdcorrespondantNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumContratNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOuverture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCloture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indemnite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdExpertNavigation.IdExpert)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdcorrespondantNavigation.IdCorrespondant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumContratNavigation.Num)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodeDossier">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CodeDossier">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodeDossier">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

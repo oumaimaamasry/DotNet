@@ -1,0 +1,47 @@
+﻿@model IEnumerable<tp7.Models.Prevision>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlafondFranchie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeForNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeGarNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlafondFranchie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeForNavigation.CodeFormule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeGarNavigation.CodeGarantie)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodeProvision">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CodeProvision">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodeProvision">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
